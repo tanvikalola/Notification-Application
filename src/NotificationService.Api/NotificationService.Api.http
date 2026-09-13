@@ -1,0 +1,37 @@
+@NotificationService_HostAddress = http://localhost:5285
+
+### 1. Health Check
+GET {{NotificationService_HostAddress}}/health
+Accept: application/json
+
+### 2. Post Info Notification (Accepted, Not Forwarded)
+POST {{NotificationService_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+  "level": "info",
+  "source": "payment-service",
+  "message": "Payment processed successfully.",
+  "timestamp": "2026-09-13T10:00:00Z"
+}
+
+### 3. Post Warning Notification (Accepted, Forwarded)
+POST {{NotificationService_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+  "level": "warning",
+  "source": "payment-service",
+  "message": "Timeout connecting to upstream API after 3 retries",
+  "timestamp": "2026-09-13T10:15:00Z"
+}
+
+### 4. Post Invalid Level (Should return 400 Bad Request)
+POST {{NotificationService_HostAddress}}/notifications
+Content-Type: application/json
+
+{
+  "level": "debug",
+  "source": "payment-service",
+  "message": "Debugging internal cache"
+}

@@ -1,0 +1,19 @@
+## Visual Studio / .NET / C# standard gitignore
+
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userprefs
+TestResults/
+*.trx
+*.coverage
+*.opencover.xml
+.dotnet/
